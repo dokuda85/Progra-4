@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../paginas/css/estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+    <div class="go-top">
+        <span class="fas fa-angle-up"></span>
+    </div>
+    <header id="header">
+     <nav class="menu">
+       <div class="logo-box">
+           <h1><a href="#">Samsung</a></h1>
+           <span class="btn-menu"><i class="fas fa-bars"></i></span>
+       </div>
+
+       <div class="list-container">
+           <ul class="lists">
+               <li><a href="#" class="activo">Catalogo</a></li>
+               <li><a href="#">Productos</a></li>
+               <li><a href="#">Complementos</a></li>
+               <li><a href="../practica2/login.html">Login</a></li>
+           </ul>
+       </div>
+     </nav>
+     <div class="img-header">
+         <div class="welcome">
+             <h1>SAMSUNG</h1>
+             <hr>
+             <p>para su merjo experiencia</p>
+         </div>
+     </div>
+
+     <div class="skew-abajo"></div>
+
+    </header>
+<main>
+  <section class="acerca-de">
+      <div class="info-container">
+          <h1>MOBILE</h1>
+
+         <div class="about-gallery">
+             <img src="https://i.ytimg.com/vi/sOSWK8MGjL4/maxresdefault.jpg" alt="">
+             <img src="https://m.media-amazon.com/images/I/41Gd+kMrr-L.jpg" alt="">
+             <img src="https://i.blogs.es/49d9fa/galaxy-a20s-versiones/450_1000.jpg" alt="">
+         </div>
+
+          
+   </div>
+  </section>
+  <section class="our-projects">
+     <div class="skew-arriba"></div>
+
+      <div class="deg-background"></div>
+
+      <div class="ejeZproject">
+          <div class="container-project">
+              <div class="project-title">
+                  <h2>MAS PRODUCTOS</h2>
+                  <hr>
+              </div>
+
+              <div class="project-img">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU8Goc50jLBEaegjgRv3u0D7W3-dyXDNHYgA&usqp=CAU" alt="">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAs9K1tI0PfMxKtpcgWbzLJkbMo1Itcq4i_g&usqp=CAU" alt="">
+                  <img src="https://images-na.ssl-images-amazon.com/images/I/61D8tCIwGtL._AC_SX522_.jpg" alt="">
+                  <img src="https://med.csmobiles.com/143018-large_default/samsung-galaxy-note-10-n970f-256gb-dual-sim-plata.jpg" alt="">
+                  <img src="https://fptechcr.com/wp-content/uploads/2020/07/samsung-galaxy-a70-128gb-black.png" alt="">
+                  <img src="https://mayfieldcellphonerepairs.com.au/wp-content/uploads/2020/11/samsung-galaxy-s9-burgundy-red.jpg" alt="">
+
+              </div>
+      </div>
+
+      <div class="skew-abajo"></div>
+  </section>
+  
+</main>
+<script src="https://kit.fontawesome.com/35db202371.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="../practica2/js/jquery.js"></script>
+    
+</body>
+</html>
+
+
+
+
+<script>
+    $(document).ready(function(){
+    
+    // Menu de Navegacion
+    var activo = true;
+ 
+    $('.btn-menu').on('click', function(){
+      
+     //Intercalar Iconos
+     $('.btn-menu i').toggleClass('fa-times');
+ 
+     //Animacion Menu
+     if(activo){
+       $('.list-container').animate({
+           left: '0px'
+       }, 500);
+ 
+       activo = false;
+ 
+     }else{
+         activo = true;
+ 
+      $('.list-container').animate({
+          left: '-100%'
+      }, 500);
+ 
+        activo = true;
+     }
+ 
+    });
+ 
+    // Intercalar Clase "Activo" Enlaces menu de navegacion
+ 
+    var enlaces = document.querySelectorAll('.lists li a');
+ 
+    enlaces.forEach( (element) => {
+      
+     element.addEventListener('click', (event) =>{
+       enlaces.forEach((link) => {
+           link.classList.remove('activo');
+       });
+ 
+       event.target.classList.add('activo');
+ 
+     });
+    });
+ 
+    // Scroll Efect
+ 
+    var prevScrollPos = window.pageYOffset;
+ 
+    window.onscroll = () => {
+ 
+     // OCultar Y Mostrar menu al hace scroll
+     var currentScrollPos = window.pageYOffset;
+ 
+     if(prevScrollPos > currentScrollPos){
+ 
+       $('.menu').css("top", "0px");
+       $('.menu').css("transition", "0.5s");
+ 
+     }else{
+       $('.menu').css("top", "-60px");
+       $('.menu').css("transition", "0.5s");
+     }
+    prevScrollPos = currentScrollPos;
+ 
+    // Condiciones
+    var posicion = window.pageYOffset;
+ 
+    if (posicion <= 600) {
+     // Ocultar Estilos Menu Scroll
+     $('.menu').css("borderBottom", "none");
+ 
+     //Ocultar Ir Arriba
+     $('.go-top').css("right", "-100%");
+ 
+    }else{
+      // Mostrar Estilos Menu Scroll
+      $('.menu').css("borderBottom", "3px solid #ff2e63");
+ 
+      //Mostrar Ir Arriba
+     $('.go-top').css("right", "0");
+     $('.go-top').css("transition", "500ms");
+ 
+    }
+  }
+ 
+  // Funcion ir arriba
+  $('.go-top').on('click', function(){
+      $('body, html').animate({
+          scrollTop: '0'
+      }, 500);
+  });
+ 
+  // Funcion ver abajo
+  $('#abajo').on('click', function(){
+    $('body, html').animate({
+       scrollTop: '600px'
+    }, 500);
+  });
+ 
+ });
+</script>
